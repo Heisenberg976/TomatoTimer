@@ -1,0 +1,127 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>TomatoTimer</title>
+</head>
+
+<body>
+    <div class="header" style="border-bottom:#000000 solid 1px">
+        <div class="head">
+            <h1 class="he">
+                <a href="#" style="color:white;">TomatoTimer</a>
+            </h1>
+            <hr>
+            <a href="" data-toggle="modal" data-target="#exampleModalLong" style="text-decoration: none;color:white;margin-left: 50px;font-size: 23px;"><i class="fas fa-cog"></i>
+                Settings</a>
+
+
+
+        </div>
+    </div>
+    <br>
+    <div class="continer">
+        <div class="col-md-3" id="main">
+            <div id="buttons">
+                <button id="work">Tomato</button>
+                <button id="short">Short Break</button>
+                <button id="long">Long Break</button>
+
+            </div>
+
+            <h2 id="time">25:00</h2>
+
+            <div id="actn">
+                <button id="start">Start</button>
+                <button id="stop">Stop</button>
+                <button id="reset">Reset</button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!-- settings -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 80%;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Settings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>Time</h4>
+                    <br>
+                    <div class="inputs">
+                        <div class="times">
+                            <div class="time">
+                                <label class="label">Pomodoro</label>
+                                <input type="number" min="0" step="1" class="" value="" id="workT">
+                            </div>
+
+                            <div class="time">
+                                <label class="label">Short Break</label>
+                                <input type="number" min="0" step="1" class="" value="5" id="shortT">
+                            </div>
+
+                            <div class="time">
+                                <label class="label">Long Break</label>
+                                <input type="number" min="0" step="1" class="" value="15" id="longT">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="n">
+                            <h4>Auto-Start Timer</h4>
+                            <label class="switch">
+                                <input type="checkbox" id="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+
+                        <div class="n">
+                            <h4>Alarm Sound</h4>
+                            <select class="form-select form-select-lg mb-3" style="margin-top:8px" aria-label=".form-select-lg example">
+                                <option selected>Select Sound</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+
+                        <div class="n">
+                            <h4>Alarm duration(sec)</h4>
+                            <select class="form-select form-select-lg mb-3" style="margin-top:8px" aria-label=".form-select-lg example">
+                                <option selected>Select Time</option>
+                                <option value="1">15</option>
+                                <option value="2">30</option>
+                                <option value="3">60</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" id="close">Close</button>
+                    <button type="button" class="btn btn-danger" id="set">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script src="index.js"></script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</html>
