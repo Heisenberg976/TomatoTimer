@@ -8,11 +8,11 @@ if (isset($_POST['button'])) {
     $sql = 'select * from users where ip = "' . $ip . '"';
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
-        $sql1 = "update users set workTime = " . $work . " , shortTime = " . $short . " , longTime = " . $long;
+        $sql1 = "UPDATE users SET workTime = " . $work . " , shortTime = " . $short . " , longTime = " . $long;
         mysqli_query($con, $sql1);
         echo $sql1;
     } else {
-        $sql2 = 'insert into users (ip,workTime,shortTime,longTime)  values("' . $ip . '",' . $work . ',' . $short . ',' . $long . ')';
+        $sql2 = 'insert into users (ip,workTime,shortTime,longTime)  VALUES("' . $ip . '",' . $work . ',' . $short . ',' . $long . ')';
         mysqli_query($con, $sql2);
         echo $sql2;
     }

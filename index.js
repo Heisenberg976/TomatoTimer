@@ -1,3 +1,4 @@
+//Get All HTML Objects
 const start = document.getElementById("start");
 const stopp = document.getElementById("stop");
 const reset = document.getElementById("reset");
@@ -7,12 +8,10 @@ const work = document.getElementById("work");
 const short = document.getElementById("short");
 const long = document.getElementById("long");
 
-//
+//Define Variables
 let workTime = 0;
 let shortTime = 0;
 let longTime = 0;
-
-
 let actn = "work";
 let workk = 0;
 let minute = 25;
@@ -20,6 +19,7 @@ let sec = 0;
 let clicked = 0;
 const audio = new Audio("notif.mp3");
 
+//Send Ajax To Retrieve Information from Database for user(for this particular IP)
 function getData() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = function() {
@@ -42,21 +42,24 @@ function getData() {
 }
 
 window.onload = getData();
-
+//set time
 function setTime() {
 
     if (clicked == 1) {
         switch (actn) {
             case 'short':
                 minute = parseInt(shortT.value);
+                sec = 60;
                 timer.innerHTML = `${minute}:00`;
                 break;
             case 'long':
                 minute = parseInt(longT.value);
+                sec = 60;
                 timer.innerHTML = `${minute}:00`;
                 break;
             case 'work':
                 minute = parseInt(workT.value);
+                sec = 60;
                 timer.innerHTML = `${minute}:00`;
 
         }
@@ -65,14 +68,17 @@ function setTime() {
         switch (actn) {
             case 'short':
                 minute = shortTime;
+                sec = 60;
                 timer.innerHTML = `${minute}:00`;
                 break;
             case 'long':
                 minute = longTime;
+                sec = 60;
                 timer.innerHTML = `${minute}:00`;
                 break;
             case 'work':
                 minute = workTime;
+                sec = 60;
                 timer.innerHTML = `${minute}:00`;
 
         }
@@ -80,28 +86,33 @@ function setTime() {
         switch (actn) {
             case 'short':
                 minute = 5;
-                sec = 0;
-                timer.innerHTML = `${minute}:00`;
+                sec = 60;
+                timer.innerHTML = `${minute}:00}`;
 
                 break;
             case 'long':
                 minute = 15;
-                sec = 0;
-                timer.innerHTML = `${minute}:00`;
+                sec = 60;
+                timer.innerHTML = `${minute}:00}`;
 
                 break;
             case 'work':
                 minute = 25;
-                sec = 0;
-                timer.innerHTML = `${minute}:00`;
+                sec = 60;
+                timer.innerHTML = `${minute}:00}`;
                 break;
         }
     }
 
 }
-
+//timer
 function timeRun() {
-    timer.innerHTML = minute + ":" + sec;
+    if (sec == 60) {
+        timer.innerHTML = minute + ":" + "00";
+    } else {
+        timer.innerHTML = minute + ":" + sec;
+    }
+
     if (minute == 0 && sec == 0) {
         audio.play();
         workk++;
@@ -109,7 +120,7 @@ function timeRun() {
         reset.click();
         start.disabled = false;
         minute = 25;
-        sec = 0;
+        sec = 60;
         if (checkbox.checked == true) {
             switch (workk) {
                 case 0:
@@ -146,7 +157,7 @@ function timeRun() {
 
     if (sec == 00) {
         minute--;
-        sec = 60;
+        sec = 59;
 
     }
     sec--;
@@ -154,23 +165,21 @@ function timeRun() {
 
 
 }
+//Listen To Button Clicks
 let countDown;
 start.addEventListener('click', function() {
-    // // console.log("click");
     countDown = setInterval(timeRun, 1000);
     start.disabled = true;
 })
 
 
 stopp.addEventListener('click', function() {
-    // console.log("click");
     clearInterval(countDown);
     start.disabled = false;
 
 })
 
 reset.addEventListener('click', function() {
-    // // console.log("click");
     clearInterval(countDown);
     start.disabled = false;
     setTime();
@@ -210,6 +219,7 @@ work.addEventListener('click', function() {
     start.disabled = false;
 })
 
+//Get Information From Settings Tab And Make Changes In Database
 const submit = document.getElementById("set");
 const shortT = document.getElementById("shortT");
 const longT = document.getElementById("longT");
