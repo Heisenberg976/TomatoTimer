@@ -49,17 +49,17 @@ function setTime() {
         switch (actn) {
             case 'short':
                 minute = parseInt(shortT.value);
-                sec = 60;
+                sec = 0;
                 timer.innerHTML = `${minute}:00`;
                 break;
             case 'long':
                 minute = parseInt(longT.value);
-                sec = 60;
+                sec = 0;
                 timer.innerHTML = `${minute}:00`;
                 break;
             case 'work':
                 minute = parseInt(workT.value);
-                sec = 60;
+                sec = 0;
                 timer.innerHTML = `${minute}:00`;
 
         }
@@ -68,17 +68,17 @@ function setTime() {
         switch (actn) {
             case 'short':
                 minute = shortTime;
-                sec = 60;
+                sec = 0;
                 timer.innerHTML = `${minute}:00`;
                 break;
             case 'long':
                 minute = longTime;
-                sec = 60;
+                sec = 0;
                 timer.innerHTML = `${minute}:00`;
                 break;
             case 'work':
                 minute = workTime;
-                sec = 60;
+                sec = 0;
                 timer.innerHTML = `${minute}:00`;
 
         }
@@ -86,19 +86,19 @@ function setTime() {
         switch (actn) {
             case 'short':
                 minute = 5;
-                sec = 60;
+                sec = 0;
                 timer.innerHTML = `${minute}:00}`;
 
                 break;
             case 'long':
                 minute = 15;
-                sec = 60;
+                sec = 0;
                 timer.innerHTML = `${minute}:00}`;
 
                 break;
             case 'work':
                 minute = 25;
-                sec = 60;
+                sec = 0;
                 timer.innerHTML = `${minute}:00}`;
                 break;
         }
@@ -107,12 +107,8 @@ function setTime() {
 }
 //timer
 function timeRun() {
-    if (sec == 60) {
-        timer.innerHTML = minute + ":" + "00";
-    } else {
-        timer.innerHTML = minute + ":" + sec;
-    }
 
+    timer.innerHTML = minute + ":" + sec;
     if (minute == 0 && sec == 0) {
         audio.play();
         workk++;
@@ -237,5 +233,5 @@ submit.addEventListener('click', function() {
     }
     http.open("POST", 'ajax/check.php', true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    http.send(`shortT=${parseInt(shortT.value)}&longT=${parseInt(shortT.value)}&workT=${parseInt(workT.value)}&button=1`);
+    http.send(`shortT=${parseInt(shortT.value)}&longT=${parseInt(longT.value)}&workT=${parseInt(workT.value)}&button=1`);
 })
